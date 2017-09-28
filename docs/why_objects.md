@@ -165,13 +165,13 @@ Nothing prevents us from doing this. Which means, the behaviour `areaOfSquare` s
 This problem simply can't be solved unless we somehow ensure that the function `areaOfSquare` knows only about a square.
 
 
-#### So, why objects?
+#### So, why should data and behaviour be bound together?
 
-It should be clear by now that not having a system that ties data and behaviour does the following:
+It should be clear by now that not having a system that automatically ties data and behaviour does the following:
 
+* Expects us to know how to define data, which might cause bugs.
+  * `{length:10}` vs `{lenght:10}`
 * Allows unrelated behaviour to be applied on unrelated data
   * calling `areaOfSquare` with a list
 * Forces us to manually tie data and behaviour, thus increasing the possibility of bugs.
   * using `bind` or some other such method
-* Expects us to know how to define data, which might cause bugs.
-  * `{length:10}` vs `{lenght:10}`
