@@ -2,6 +2,9 @@
 ---
 
 @import "{{ site.theme }}";
+pre {
+  background-color: #272822;
+}
 .highlight pre { background-color: #272822; }
 .highlight code {background-color: #272822;}
 .highlight .hll { background-color: #272822; }
