@@ -65,3 +65,59 @@ console.log("The area of tile is",areaOfSquare(squares));
 ```
 
 Observe this very closely. The `areaOfSquare` function expects an object whose `length` property is defined. `squares` is a list who has a `length` property.
+
+Kavita wanted to pass `tile` to `areaOfSquare`, but she mistakenly passed `squares`. This worked because `squares` is a list and has the property length. Now this is a problem, because any object that has the property `length` can be passed to areaOfSquare and will be calculated. As long as that property is a number, the result will even seem sensible.
+
+John and Kavita realise that one of the problems of functions is that when they operate on data, they expect the data to come from the outside. This is not safe. Anybody can pass anything.
+
+Instead, what if there were a way where the data and the functions that operated on it stayed together. Even better, what if that function knew how to get the data it needed instead of relying on people to pass it the data.
+
+
+#### We are in a bind!
+
+Now that Kavita and John are in a [bind](https://www.merriam-webster.com/dictionary/bind), let us briefly take a detour to understand some aspects of Javascript.
+
+
+[Function.prototype.bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) is a function that can do very useful things. Assuming that you understand the concept of `this` in Javascript, bind is very easy to understand.
+
+Consider this function:
+
+```javascript
+const areaOfSquare=function() {
+  return this.length * this.length;
+}
+```
+
+This function doesn't expect any input. Instead, it relies on the `this` object. It expects the `this` object to have the property length defined on it.
+
+If we just call it, then it will try to use the length defined in a global object or where you are calling it from:
+
+```javascript
+var length=10;
+console.log(areaOfSquare());
+```
+
+produces:
+
+```javascript
+100
+```
+
+This "`magic`" returns a valid value, in this case `100` because length has been defined on the global object. `areaOfSquare` tries to figure out what `this` means and uses the global object as `this`.
+
+However, we can do something interesting with bind here.
+
+```javascript
+var tile=createSquare(10);
+var areaOfTile=areaOfSquare.bind(tile);
+
+console.log(areaOfTile());
+```
+
+produces:
+
+```javascript
+100
+```
+
+This also works magically! How? The answer lies with bind. Bind ties the function `areaOfSquare` to the object `tile`. Bind then returns a new function, which in this case is assigned to `areaOfTile`
