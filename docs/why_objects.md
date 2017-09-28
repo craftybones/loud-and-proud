@@ -108,7 +108,7 @@ This "`magic`" returns a valid value, in this case `100` because length has been
 However, we can do something interesting with bind here.
 
 ```javascript
-var tile=createSquare(10);
+var tile={length:10};
 var areaOfTile=areaOfSquare.bind(tile);
 
 console.log(areaOfTile());
@@ -120,4 +120,46 @@ produces:
 100
 ```
 
-This also works magically! How? The answer lies with bind. Bind ties the function `areaOfSquare` to the object `tile`. Bind then returns a new function, which in this case is assigned to `areaOfTile`
+This also works magically! How? The answer lies with bind. Bind ties the function `areaOfSquare` to the object `tile`. Bind then returns a new function, which in this case is assigned to `areaOfTile`. When `areaOfTile` is called, `this` refers to `tile` as it has been bound.
+
+So, `bind` simply binds a function to a given object and when the function is called, all references to `this` in that function, will now point to the object.
+
+Re-read this before you proceed.
+
+#### Getting out of the bind
+
+Kavita and John are still not sure how to fix the problem of a method expecting its arguments to have the property `length`. Having discovered `bind` however, they decide to try something.
+
+```javascript
+let tile=createSquare(10);
+let areaOfTile=areaOfSquare.bind(tile);
+
+console.log(areaOfTile());
+```
+
+produces
+
+```javascript
+100
+```
+
+Yay! This works. Or does it? Let us see.
+
+Kavita can still bind a list to `areaOfSquare`.
+
+```javascript
+let numbers=[1,2,3];
+
+let areaOfNumbers=areaOfSquare.bind(numbers);
+console.log(areaOfNumbers());
+```
+
+produces
+
+```javascript
+9
+```
+
+Nothing prevents us from doing this. Which means, the behaviour `areaOfSquare` still doesn't have anything to do with a square. It simply works on a property called `length`.
+
+This problem simply can't be solved unless we somehow ensure that the function `areaOfSquare` knows only about a square.
