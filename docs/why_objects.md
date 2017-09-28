@@ -38,7 +38,7 @@ Kavita is excited and runs her code, only to find that while the first square's 
 NaN
 ```
 
-Observe closely and you will find that Kavita made a spelling mistake in the definition of tile and used `lenght` instead of `length`
+Observe closely and you will find that Kavita made a spelling mistake in the definition of tile and used `lenght` instead of `length`. Kavita quickly realises that there needs to be a consistent way of creating a square object. The possibility of making typing mistakes is high.
 
 She complains to John about this problem. But being more than just someone who complains, she comes up with a solution.
 
@@ -52,7 +52,7 @@ var createSquare=function(length) {
 exports.createSquare=createSquare;
 ```
 
-This is beautiful! It works! Kavita is happy. For now. After a while, she discovers something interesting. She was writing some code and something strange happened. Here's what she wrote.
+This is beautiful! It works! Every time one wants to make a square object, they call this function. Kavita is happy. For now. After a while, she discovers something interesting. She was writing some code and something strange happened. Here's what she wrote.
 
 
 ```javascript
@@ -70,7 +70,7 @@ Kavita wanted to pass `tile` to `areaOfSquare`, but she mistakenly passed `squar
 
 John and Kavita realise that one of the problems of functions is that when they operate on data, they expect the data to come from the outside. This is not safe. Anybody can pass anything.
 
-Instead, what if there were a way where the data and the functions that operated on it stayed together. Even better, what if that function knew how to get the data it needed instead of relying on people to pass it the data.
+Instead, what if there were a way where the data and the functions that operated on it stayed together. Even better, what if that function knew how to get the data it needed instead of relying on people to pass it the data?
 
 
 #### We are in a bind!
@@ -120,7 +120,7 @@ produces:
 100
 ```
 
-This also works magically! How? The answer lies with bind. Bind ties the function `areaOfSquare` to the object `tile`. Bind then returns a new function, which in this case is assigned to `areaOfTile`. When `areaOfTile` is called, `this` refers to `tile` as it has been bound.
+This also works magically! How? The answer lies with bind. `bind` ties the function `areaOfSquare` to the object `tile`. `bind` then returns a new function, which in this case is assigned to `areaOfTile`. When `areaOfTile` is called, `this` refers to `tile` as it has been bound.
 
 So, `bind` simply binds a function to a given object and when the function is called, all references to `this` in that function, will now point to the object.
 
@@ -163,3 +163,15 @@ produces
 Nothing prevents us from doing this. Which means, the behaviour `areaOfSquare` still doesn't have anything to do with a square. It simply works on a property called `length`.
 
 This problem simply can't be solved unless we somehow ensure that the function `areaOfSquare` knows only about a square.
+
+
+#### So, why objects?
+
+It should be clear by now that not having a system that ties data and behaviour does the following:
+
+* Allows unrelated behaviour to be applied on unrelated data
+  * calling `areaOfSquare` with a list
+* Forces us to manually tie data and behaviour, thus increasing the possibility of bugs.
+  * using `bind` or some other such method
+* Expects us to know how to define data, which might cause bugs.
+  * `{length:10}` vs `{lenght:10}`
