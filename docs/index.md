@@ -1,1 +1,1 @@
-[Why Objects](/why_objects)
+[Why Objects](why_objects)
