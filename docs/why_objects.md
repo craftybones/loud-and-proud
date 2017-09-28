@@ -175,3 +175,5 @@ It should be clear by now that not having a system that automatically ties data 
   * calling `areaOfSquare` with a list
 * Forces us to manually tie data and behaviour, thus increasing the possibility of bugs.
   * using `bind` or some other such method
+* Even manually binding doesn't solve problems
+  * Every new instance of an object has to be bound again to the behaviour desired.
