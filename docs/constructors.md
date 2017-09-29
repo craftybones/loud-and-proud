@@ -18,8 +18,6 @@ var createSquare=function(length) {
   return square;
 }
 
-// use this as
-
 var tile=createSquare(10);
 ```
 
