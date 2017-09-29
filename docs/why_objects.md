@@ -78,6 +78,15 @@ Please read about [how bind works](how_does_bind_work) if you haven't already. I
 
 Kavita and John are still not sure how to fix the problem of a method expecting its arguments to have the property `length`. Having discovered `bind` however, they decide to try something.
 
+Consider a new definition of `createSquare` now.
+
+```javascript
+const areaOfSquare=function() {
+  return this.length * this.length;
+}
+```
+
+
 ```javascript
 let tile=createSquare(10);
 let areaOfTile=areaOfSquare.bind(tile);
