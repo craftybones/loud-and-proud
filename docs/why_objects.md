@@ -125,3 +125,6 @@ Not having a system that automatically ties data and behaviour does the followin
   * using `bind` or some other such method
 * Even manually binding doesn't solve problems
   * Every new instance of an object has to be bound again to the behaviour desired.
+
+
+It would be good to read how to [define behaviour in an object](behaviour_in_an_object) next.
