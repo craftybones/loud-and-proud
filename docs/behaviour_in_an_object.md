@@ -34,11 +34,41 @@ var areas=squares.map((square) => square.area());
 console.log(areas);
 ```
 
-As you can see, this cleans things up considerably. However, observe that we had to manually associate the object's `area` property with the function `areaOfSquare` in `createSquare`. Also, we had to manually create an empty object `square` and associate the `lenght` property that way as well.
+As you can see, this cleans things up considerably. However, observe that we had to manually associate the object's `area` property with the function `areaOfSquare` in `createSquare`. Also, we had to manually create an empty object `square` and associate the `length` property that way as well.
 
 This is alright when there is just one property and one function. But if we had many, which is often the case, this approach has the same problem as with all manual wiring scenarios. You can easily cause a typing mistake.
 
-Another disadvantage is that `area` is now listed as a property.
+
+For example:
+```javascript
+var addSong=function(song) {
+  this.songs.push(song);
+}
+
+var totalPlayTime=function() {
+  return this.songs.reduce((playTime,song) => playTime+song.length);
+}
+
+var removeSong=function(song) {
+  // code to remove song
+}
+
+var shuffle=function() {
+  // code to shuffle
+}
+
+var createPlaylist=function() {
+  let playList={songs:[]};
+  playList.addSong=addSong;
+  playList.totalPlaytime=totalPlayTime;
+  playList.removeSong=removesong;
+  playList.shuffle=shuffle;
+}
+```
+
+See if you can spot any problems in the example above.
+
+Another disadvantage is that behaviours are now listed as properties.
 
 ```javascript
 var tile=createSquare(10);
