@@ -113,8 +113,86 @@ var tile=new Square(10);
 console.log(tile.area());
 ```
 
+produces
+
+```javascript
+100
+```
+
+Works like a charm!
+
+#### Prototype
+
+We've seen `prototype`. However, we need to understand what it is and how it works.
+
+Prototype is a property. Its value is simply an object in itself.
+
+For instance:
+```javascript
+var Square=function(length) {
+  this.length=length;
+}
+
+Square.prototype={};
+Square.prototype.colour="green";
+Square.prototype.age=100;
+Square.prototype.area=function(){
+  return this.length*this.length;
+}
+console.log(Square.prototype);
+```
+
+produces
+
+```javascript
+{ colour: 'green', age: 100, area: [Function] }
+```
+
+You will see that we initialised `Square.prototype` as an empty object here and added some properties to it such as `colour`,`age`, and `area`.
+
+Again, apart from `area`, none of these properties are really useful. Notice, the value of any of `prototype`'s properties can be functions. Just like any other object in Javascript.
+
+We can define the `prototype` object in two different ways:
+
+**Method 1**
+```javascript
+var Square=function(length) {
+  this.length=length;
+}
+
+Square.prototype.area=function(){
+  return this.length*this.length;
+}
+
+Square.prototype.perimeter=function(){
+  return 4 * this.length;
+}
+
+```
+
+Observe closely. There's something interesting going on here. `Square.prototype.area` implies that `Square.prototype` is an object. But we didn't define it. It should have complained.
+
+ So how does this work. Try defining any function in Javascript and try accessing its `prototype` property and you will see that Javascript inserts a `prototype` property by default into functions.
+
+**Method 2**
+```javascript
+var Square=function(length) {
+  this.length=length;
+}
+
+Square.prototype={
+  area:function(){
+    return this.length*this.length;
+  },
+  perimeter:function(){
+    return 4 * this.length;
+  }
+}
+```
+
+This method simply defines a fresh object with key value pairs. This `prototype` has two properties `area` and `perimeter`, both of which have functions for values. It is important to note the comma that comes between both properties. Remember, `prorotype` is an object. So when we define its properties as key-value pairs, we have to separate them with a comma.
 
 
+Both methods are equally valid and any preference is primarily stylistic. The second method is more common.
 
-----
-#### Examples
+We will shortly learn another technique that will make it even easier to define these things.
