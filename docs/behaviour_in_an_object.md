@@ -69,9 +69,12 @@ var createPlaylist=function() {
 }
 ```
 
-See if you can spot any problems in the example above.
+See if you can spot any problems in the example above. There's a very subtle problem that has serious consequences. Look closely.
 
-Another disadvantage is that behaviours are now listed as properties.
+----
+
+Another disadvantage is that behaviours are now listed as properties. Consider the prior example of creating squares.
+
 
 ```javascript
 var tile=createSquare(10);
