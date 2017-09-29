@@ -85,6 +85,8 @@ While this doesn't directly affect us, it exposes more than it needs to. For ins
 
 We all know you have kidneys, hearts and other organs, but if anybody other than you had access to it, a lot of havoc can occur. It helps to prevent people from using functions in a manner other than advertised or recommended.
 
+#### What do we need?
+
 It would be helpful if the language had a mechanism where we could automatically do the following:
 
 * Automatically create a new object and use `this` to refer to that object
