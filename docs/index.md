@@ -7,3 +7,11 @@
 [Why Constructor?](why_constructor)
 
 [Why `prototype`?](why_prototype)
+
+Different ways to create objects
+
+What is `this`?
+
+Sync, async, callback
+
+map, filter, reduce, forEach
