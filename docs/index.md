@@ -4,9 +4,11 @@
 
 [How to define behaviour in an object?](behaviour_in_an_object)
 
-[Why Constructor?](why_constructor)
+[Constructors](constructors)
 
 [Why `prototype`?](why_prototype)
+
+Difference between call, bind and apply
 
 Different ways to create objects
 
