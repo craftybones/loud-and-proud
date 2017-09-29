@@ -36,6 +36,9 @@ console.log(areas);
 
 As you can see, this cleans things up considerably. However, observe that we had to manually associate the object's `area` property with the function `areaOfSquare` in `createSquare`. Also, we had to manually create an empty object `square` and associate the `length` property that way as well.
 
+
+#### Problems with this approach
+
 This is alright when there is just one property and one function. But if we had many, which is often the case, this approach has the same problem as with all manual wiring scenarios. You can easily cause a typing mistake.
 
 
