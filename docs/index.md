@@ -1,4 +1,4 @@
-> Ask your questions loud and proud<br/>For there is no such thing as a stupid question.
+> _Ask your questions loud and proud<br/>For there is no such thing as a stupid question._
 
 ### Objects
 
