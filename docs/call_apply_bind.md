@@ -176,3 +176,88 @@ and everything will work as expected. We have now used `apply` by passing `18` a
 All this is very fine, but does `apply` *really* have a use case beyond what is shown?
 
 Turns out it does.
+
+
+#### A good usage of `apply`
+
+Consider a series of tests on `isOdd`
+
+```javascript
+const testEvenPositiveNumbers=function() {
+  assert.equal(false,isOdd(2))
+}
+
+const testEvenPositiveNumbers=function() {
+  assert.equal(true,isOdd(1))
+}
+
+const testEvenNegativeNumbers=function() {
+  assert.equal(false,isOdd(-2))
+}
+
+const testEvenNegativeNumbers=function() {
+  assert.equal(true,isOdd(-1))
+}
+
+const testZero=function() {
+  assert.equal(true,isOdd(0))
+}
+```
+
+This is fine, but it is too involved. All the functions are simply asserting against different expectations and arguments.
+
+What if we write a generic function that can test anything?
+
+```javascript
+const testAnything=function(msg,expectation,fnName,argument) {
+  console.log(msg);
+  assert.equal(expectation,fnName(argument));
+}
+
+var tests=[
+  {msg:"even positive numbers",expectation:false,fnName:isOdd,argument:2},
+  {msg:"odd positive numbers",expectation:true,fnName:isOdd,argument:1},
+  {msg:"even negative numbers",expectation:false,fnName:isOdd,argument:-2},
+  {msg:"odd positive numbers",expectation:true,fnName:isOdd,argument:-1},
+  {msg:"zero",expectation:true,fnName:isOdd,argument:0}
+];
+
+tests.forEach(function(test){
+  testAnything(test.msg,test.expectation,test.fnName,test.argument);
+});
+```
+
+Wow! This is sweet! We have a function that we can now use to test any suite of tests for any function. Kind of. This above solution is somewhat nicer than what we had before. We will a runtime report of what is happening because of the console logs. It is also much shorter.
+
+But the function name is `testAnything`. Is this really true? Can this really test anything?
+
+What if instead of `isOdd`, we had the function `greaterOf` which returns the greater of two numbers?
+
+Our `testAnything` won't work. It expects all functions to have only one argument. This is an unrealistic and limiting expectation. Clearly `testAnything` isn't yet capable of testing anything.
+
+So what would we need to be able to test anything. We would need some manner to call a function with any number of arguments. We just learned `call` and `apply`. Maybe we can use one of those.
+
+Which one though? Will `call` work? Let us see.
+
+```javascript
+const testAnything=function(msg,expectation,fnName,arg1,arg2) {
+  console.log(msg);
+  let actual=fnName.call(arg1,arg2);
+  assert.equal(expectation,fnName(argument));
+}
+```
+
+This won't work, will it? What if we have 3 arguments instead of 2? What about 5? The problem with `call` is that it requires us to know exactly how many arguments to call when we *write* the function. However, in this case, we need a manner to apply a variable number of arguments at *runtime*.
+
+Well, what about `apply`? Maybe it will work, but before we try that, we also have one more thing to take care of. Our `testAnything` also currently accepts a fixed number of arguments. We need it to accept a variable number of arguments.
+
+Read about [how this is done](varargs) if you don't know it already.
+
+Let us see.
+```javascript
+const testAnything=function(msg,expectation,fnName,) {
+  console.log(msg);
+  let actual=fnName.call(arg1,arg2);
+  assert.equal(expectation,fnName(argument));
+}
+```
