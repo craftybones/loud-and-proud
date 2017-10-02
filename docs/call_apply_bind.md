@@ -227,7 +227,7 @@ tests.forEach(function(test){
 });
 ```
 
-Wow! This is sweet! We have a function that we can now use to test any suite of tests for any function. Kind of. This above solution is somewhat nicer than what we had before. We will a runtime report of what is happening because of the console logs. It is also much shorter.
+Wow! This is sweet! We have a function that we can now use to test any suite of tests for any function. Kind of. This above solution is somewhat nicer than what we had before. We will have a runtime report of what is happening because of the console logs. It is also much shorter.
 
 But the function name is `testAnything`. Is this really true? Can this really test anything?
 
