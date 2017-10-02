@@ -10,7 +10,7 @@
 * Different ways to create objects
 
 ### Others
-
+* [Function Guidelines](function_guidelines)
 * [Variable length arguments](varargs)
   * How do I pass any number of arguments to a function?
   * How do I use `arguments`?
