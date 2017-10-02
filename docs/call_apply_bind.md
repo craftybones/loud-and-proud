@@ -243,7 +243,7 @@ Which one though? Will `call` work? Let us see.
 const testAnything=function(msg,expectation,fnName,arg1,arg2) {
   console.log(msg);
   let actual=fnName.call(arg1,arg2);
-  assert.equal(expectation,fnName(argument));
+  assert.equal(expectation,actual);
 }
 ```
 
@@ -258,7 +258,7 @@ Let us see.
 const testAnything=function(msg,expectation,fnName,...args) {
   console.log(msg);
   let actual=fnName.apply(args);
-  assert.equal(expectation,fnName(argument));
+  assert.equal(expectation,actual);
 }
 
 // testing functions with single arguments
