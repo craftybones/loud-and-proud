@@ -16,6 +16,6 @@
   * How do I use `arguments`?
   * What is `...`?
 * [How does `bind` work?](how_does_bind_work)
-* `call`, `apply`, and `bind`
+* [`call`, `apply`, and `bind`](call_apply_bind)
 * Sync, async, callback
 * map, filter, reduce, forEach
