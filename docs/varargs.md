@@ -43,6 +43,23 @@ You entered 3 arguments
 
 Wow! That really is some magic. This function knows everything about the arguments you passed! As you can see, this is useful. `arguments` has some other features that you can read about in detail [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
 
-The one important thing to note here is that the `arguments` object is not an `Array`. Therefore you may not do things with it like you can with arrays. No `map`, `filter` or `slice` for instance. The above link should detail this.
+The one important thing to note here is that the `arguments` object is not an `Array`. Therefore you may not do things with it like you can with arrays. No `map`, `filter` or `slice` for instance. The above link should detail this better.
 
 #### Using `...`
+
+Another way to deal with a variable number of arguments is to use the `...` operator.
+
+```javascript
+const magic=function(...args) {
+  console.log("You entered",args.length,"arguments");
+  for (var i = 0; i < args.length; i++) {
+    console.log(i+1,args[i]);
+  }  
+}
+```
+
+Running the above produces the exact same output as the `magic` function in the previous section. The main thing to note here is that the `args` variable is an array. Which means, you can use all the array methods that are available such as `map`, `filter`, `slice` et al.
+
+While both the ways are used, `arguments` is commonly used when none of the arguments are known. `...` is used when the first few arguments are known. Also, `arguments` is useful when you need more information such as who called that function.
+
+The main difference to be noted here is that `arguments` is an object whereas `...args` is an array.
