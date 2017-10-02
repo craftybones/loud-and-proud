@@ -255,9 +255,79 @@ Read about [how this is done](varargs) if you don't know it already.
 
 Let us see.
 ```javascript
-const testAnything=function(msg,expectation,fnName,) {
+const testAnything=function(msg,expectation,fnName,...args) {
   console.log(msg);
-  let actual=fnName.call(arg1,arg2);
+  let actual=fnName.apply(args);
   assert.equal(expectation,fnName(argument));
 }
+
+// testing functions with single arguments
+testAnything("odd positive numbers",true,isOdd,1);
+testAnything("even positive numbers",false,isOdd,2);
+
+// testing functions that take multiple arguments
+testAnything("first number greater",2,greaterOf,2,1);
+testAnything("second number greater",2,greaterOf,1,2);
 ```
+
+We now truly have a `testAnything`. In fact, now our `testAnything` can be improved to have more `console.log` statements that outline the arguments passed and we will have a lot more informative framework.
+
+----
+#### `bind`
+
+How `bind` works has been outlined [here](how_does_bind_work). Please read that before you continue.
+
+`bind` is different from `apply` and `call` in that it doesn't actually invoke a function. Instead, it returns a reference to a function that is bound to an object of your desire. This returned reference can then be used as many times as you wish.
+
+Why is this useful? Well, it has many uses. One of the most interesting usages is [partial application](https://en.wikipedia.org/wiki/Partial_application).
+
+What is partial application? It is a process where we fix a function with a few arguments and produce another function. The newly produced function will be supplied the rest of the arguments when needed.
+
+An example:
+
+```javascript
+var greaterThan=function(x,y) {
+  return x>y;
+}
+
+var isTenGreaterThan=greaterThan.bind(null,10);
+console.log(isTenGreaterThan(5));
+console.log(isTenGreaterThan(15));
+```
+
+produces
+
+```javascript
+true
+false
+```
+
+What is happening here? `greaterThan` is bound to the `null` object. Binding to the `null` object is fine here because our `greaterThan` has no `this` references. Importantly, once bound, `bind` returns a new function. This function already has its first argument supplied. In this case, we have supplied 10 as the first argument.
+
+Our new function `isTenGreaterThan` does exactly what it says. Which is, it calls `greaterThan` with 10 as the first argument. The first argument you supply to `isTenGreaterThan` now becomes the second argument to `greaterThan`.
+
+Consider this:
+```javascript
+const numbersBelowThreshold=function(numbers,threshold) {
+  return numbers.filter(function(number){
+    return threshold>number;
+  });
+}
+```
+
+One of the disadvantages of the above is that `filter` now takes an anonymous function. Anonymous functions are notorious in that they can't be tested easily. Partial application solves this problem very neatly.
+
+```javascript
+var greaterThan=function(x,y) {
+  return x>y;
+}
+
+const numbersBelowThreshold=function(numbers,threshold) {
+  let isNumberBelowThreshold=greaterThan.bind(threshold);
+  return numbers.filter(isNumberBelowThreshold);
+}
+```
+
+Much better. The logic of comparing two numbers is now testable. `filter` no longer takes an anonymous function. We applied partial application in order to remove the anonymity of the function that `filter` accepts.
+
+As you can see, bind has its uses beyond merely binding the function to a specific context. It can be used to solve these kinds of problems as well.
