@@ -1,3 +1,5 @@
 theme: jekyll-theme-primer
 google_analytics: UA-58935435-2
 title: Loud And Proud
+plugins:
+  - jemoji
