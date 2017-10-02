@@ -100,3 +100,5 @@ It would be helpful if the language had a mechanism where we could automatically
 * Automatically wire function names up to the desired behaviour name without having to explicitly mention it.
 
 It turns out that Javascript does allow us to do this!
+
+Read all about it under [constructors](constructors).
