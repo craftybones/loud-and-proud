@@ -183,6 +183,10 @@ Turns out it does.
 Consider a series of tests on `isOdd`
 
 ```javascript
+const isOdd=function(number) {
+  return number%2!=0;
+}
+
 const testEvenPositiveNumbers=function() {
   assert.equal(false,isOdd(2))
 }
@@ -209,6 +213,10 @@ This is fine, but it is too involved. All the functions are simply asserting aga
 What if we write a generic function that can test anything?
 
 ```javascript
+const isOdd=function(number) {
+  return number%2!=0;
+}
+
 const testAnything=function(msg,expectation,fnName,argument) {
   console.log(msg);
   assert.equal(expectation,fnName(argument));
@@ -242,7 +250,7 @@ Which one though? Will `call` work? Let us see.
 ```javascript
 const testAnything=function(msg,expectation,fnName,arg1,arg2) {
   console.log(msg);
-  let actual=fnName.call(arg1,arg2);
+  let actual=fnName.call(null,arg1,arg2);
   assert.equal(expectation,actual);
 }
 ```
@@ -255,9 +263,17 @@ Read about [how this is done](varargs) if you don't know it already.
 
 Let us see.
 ```javascript
+const isOdd=function(number) {
+  return number%2!=0;
+}
+
+const greaterThan=function(first,second) {
+  return first>second;
+}
+
 const testAnything=function(msg,expectation,fnName,...args) {
   console.log(msg);
-  let actual=fnName.apply(args);
+  let actual=fnName.apply(null,args);
   assert.equal(expectation,actual);
 }
 
@@ -269,8 +285,10 @@ testAnything("even positive numbers",false,isOdd,2);
 testAnything("first number greater",2,greaterOf,2,1);
 testAnything("second number greater",2,greaterOf,1,2);
 ```
+> _We have used `null` as the first argument to `apply` because we don't really have a calling context here._
 
 We now truly have a `testAnything`. In fact, now our `testAnything` can be improved to have more `console.log` statements that outline the arguments passed and we will have a lot more informative framework.
+
 
 ----
 #### `bind`

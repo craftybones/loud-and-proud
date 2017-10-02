@@ -4,6 +4,10 @@ Here are some guidelines that will help you write better functions. If you follo
 
 ----
 
+**Responsibility**
+* A function should do only one thing and do it well :star: :star: :star:
+
+
 **Naming your functions**
 * Write the usage first, define later.
 * Verbs make better names than nouns.
