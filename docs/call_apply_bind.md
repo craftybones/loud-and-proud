@@ -341,7 +341,7 @@ var greaterThan=function(x,y) {
 }
 
 const numbersBelowThreshold=function(numbers,threshold) {
-  let isNumberBelowThreshold=greaterThan.bind(threshold);
+  let isNumberBelowThreshold=greaterThan.bind(null,threshold);
   return numbers.filter(isNumberBelowThreshold);
 }
 ```
