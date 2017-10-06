@@ -53,7 +53,62 @@ produces
 goldie is greater than silvery
 ```
 
-What sorcery is this?! We defined `this.hero` and `this.villain`. How did `hero` and `villain` get defined. After all, we put attributes into some object called `this`. How does this automatically define `hero` and `villain`?
+What sorcery is this?! We defined `this.hero` and `this.villain`. How did `hero` and `villain` get defined. After all, we put attributes into some object called `this`. How do `hero` and `villain` automatically get defined?
 
+We need to understand that there is a global object that node uses. This global object is referenced by `this`. Whenever we assign something to a variable, the variable gets defined within the global object.
+
+Let us try it the other way around
+
+```javascript
+sidekick="bronzy";
+console.log(this.sidekick,"is also better than the villain");
+```
+
+produces
+
+```javascript
+bronzy is also better than the villain
+```
+
+This means, that the association is both ways. When we define something on `this` it becomes globally available and when we define something globally, it becomes an attribute in the global object.
+
+#### What else is in the global object?
+
+The global object contains references to several things apart from variables that we define globally. We have all used `console.log`. If you look at `console.log` and didn't know that `console` was something special in Javascript, you would think that `console` is an object.
+
+In fact, `console` is an object. Given that we never defined it, then it is likely that `console` is defined in the global object. Let us see.
+
+```javascript
+this.console
+```
+gives us
+
+```javascript
+Console {
+  log: [Function: bound log],
+  info: [Function: bound log],
+  warn: [Function: bound warn],
+  error: [Function: bound warn],
+  dir: [Function: bound dir],
+  time: [Function: bound time],
+  timeEnd: [Function: bound timeEnd],
+  trace: [Function: bound trace],
+  assert: [Function: bound assert],
+  Console: [Function: Console] }
+```
+
+Further, when we do the following, see what happens:
+
+```javascript
+this.console.log("Hello world");
+```
+
+produces
+
+```javascript
+Hello World
+```
+
+Not only is there a reference named `this.console.log`, but it works just like `console.log`. It works that way because it *is* the same.
 
 #### Calling context
