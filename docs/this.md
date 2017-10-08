@@ -111,4 +111,33 @@ Hello World
 
 Not only is there a reference named `this.console.log`, but it works just like `console.log`. It works that way because it *is* the same.
 
+It is critical to note that `this.something` and `something` are only equivalent when `this` is the global object. That means, node will not do a lookup of variables, functions etc unless `this` is the global object.
+
+```javascript
+var Person=function(name) {
+  this.name=name;
+}
+
+Person.prototype.jump=function() {
+  console.log(name,"is jumping");
+}
+
+Person.prototype.jumpTwice=function() {
+  jump();
+  jump();
+}
+
+let kavita=new Person("kavita");
+kavita.jumpTwice();
+```
+
+results in
+
+```javascript
+ReferenceError: jump is not defined
+```
+
+Why so? If you look at it, in the `jumpTwice` method, there is a reference to `jump`. The `this` object when `jumpTwice` is called is in fact the Person object and not the global object. Does javascript automatically know to call `kavita.jump()`? The answer is that it does not. It only does a lookup on the global object. It doesn't do it on any other object. `jump` will be called only if it is defined in the global context. To make this work, we need to understand calling contexts.
+
+
 #### Calling context
