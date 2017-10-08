@@ -137,7 +137,53 @@ results in
 ReferenceError: jump is not defined
 ```
 
-Why so? If you look at it, in the `jumpTwice` method, there is a reference to `jump`. The `this` object when `jumpTwice` is called is in fact the Person object and not the global object. Does javascript automatically know to call `kavita.jump()`? The answer is that it does not. It only does a lookup on the global object. It doesn't do it on any other object. `jump` will be called only if it is defined in the global context. To make this work, we need to understand calling contexts.
+Why so? If you look at it, in the `jumpTwice` method, there is a reference to `jump`. The `this` object when `jumpTwice` is called is in fact the Person object and not the global object. Does javascript automatically know to call `kavita.jump()`? The answer is that it does not. It only does a lookup on the global object. It doesn't do lookup any other object. `jump` will be called only if it is defined in the global context. But that won't work, since we have a context. We don't want the whole world to jump when jump is called. We want only Kavita to jump.
+
+To make this work, we need to understand calling contexts.
 
 
 #### Calling context
+
+To understand calling context, one must have read about [why objects](why_objects) and [constructors](constructors). So brush up on that if you haven't already.
+
+Let us briefly go back to our `Square` example.
+
+```javascript
+var Square=function(length) {
+  this.length=length;
+}
+
+Square.prototype = {
+  area:function() {
+    return this.length*this.length
+  }
+}
+
+var tile=new Square(10);
+var areaOfTile=tile.area();
+```
+
+We all understand that when `new Square` is called, then a new empty object is bound to the Square function and is then called. At this point, when `this.length=length;` is executed, `this` refers to the empty object.
+
+Similarly, when `tile.area()` is called, Javascript similarly changes `this` to refer to the `tile` object and then calls `area`. So all references to `this` in the `area` method are simply references to what was placed before the `area` function.
+
+```javascript
+tile.area();  // Calling context in area is `tile`
+chocolate.perimeter(); // Calling context in perimeter is `chocolate`
+kavita.depositIntoAccount(200); // Calling context in depositIntoAccount is `kavita`
+```
+
+A calling context is simply the context that Javascript has called a function with. In the global context, this is the global object. In other cases, it is mostly the object to which that function belongs. Sometimes this is not the case as we will see later. But for the most part, as shown above the calling context is set to whoever/whatever made that call.
+
+A picture is worth a thousand words, so here:
+
+![Calling Context](assets/images/calling_context.png)
+
+_Note: The above image was generated using [Python Tutor](http://www.pythontutor.com/live.html#mode=edit)_
+
+As the image above illustrates, when we execute the code above, and when we eventually get to line number 7 that reads `return this.length * this.length`, we can see that `this` points to the same object that `tile` points to. Note the blue arrow and gray arrow that lead from `this` and `tile` respectively.
+
+I would highly recommend trying [Python Tutor](http://www.pythontutor.com/live.html#mode=edit) for yourself. It will definitely help you grasp these concepts better.
+
+
+#### Other calling contexts
