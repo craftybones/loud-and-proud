@@ -184,6 +184,3 @@ _Note: The above image was generated using [Python Tutor](http://www.pythontutor
 As the image above illustrates, when we execute the code above, and when we eventually get to line number 7 that reads `return this.length * this.length`, we can see that `this` points to the same object that `tile` points to. Note the blue arrow and gray arrow that lead from `this` and `tile` respectively.
 
 I would highly recommend trying [Python Tutor](http://www.pythontutor.com/live.html#mode=edit) for yourself. It will definitely help you grasp these concepts better.
-
-
-#### Other calling contexts

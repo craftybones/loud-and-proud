@@ -5,7 +5,7 @@
 * [Why Objects](why_objects)
 * [How to define behaviour in an object?](behaviour_in_an_object)
 * [Constructors](constructors)
-* What is `this`?
+* [What is `this`?](this)
 * Why `prototype`?
 * Different ways to create objects
 
