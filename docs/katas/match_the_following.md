@@ -7,7 +7,7 @@ title: Match The Following
 You are given two files. Each file contains different parts of the same string. The aim of this exercise is to match pairs of strings. For every string in the first file, there is a string in the second file whose first four characters are the same as the last four characters of the first.
 
 Sample of File 1:
-```javascript
+```
 79oklw
 381jstc
 453usja
@@ -15,7 +15,7 @@ Sample of File 1:
 ```
 
 Sample of File 2:
-```javascript
+```
 jstc331
 oklw737
 bdxv211
@@ -23,7 +23,7 @@ usja514
 ```
 
 Sample output:
-```javascript
+```
 79oklw737
 381jstc331
 453usja514
