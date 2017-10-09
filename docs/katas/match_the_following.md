@@ -1,5 +1,5 @@
 ---
-title: {{site.title}} - Match The Following
+title: Match The Following
 ---
 
 Test Kata
