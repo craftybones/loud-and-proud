@@ -23,12 +23,12 @@ usja514
 ```
 
 Sample output:
-```
+<pre>
 79oklw737
 381jstc331
 453usja514
 535bdxv211
-```
+</pre>
 
 In the above samples, `oklw`, `jstc`, `usja` and `bdxv` form the endings of the strings in File 1. They also form the beginnings of the string in File 2.
 
@@ -41,11 +41,11 @@ There are two sets of files provided. The first set consists of a small data set
 _Right click and save as a text file for the links below._
 
 **Small Set**
-* [File 1](katas/data/match_small_1.txt)
-* [File 2](katas/data/match_small_2.txt)
+* [File 1](data/match_small_1.txt)
+* [File 2](data/match_small_2.txt)
 
 **Large Set**
-* [File 1](katas/data/match_large_1.txt)
-* [File 2](katas/data/match_large_2.txt)
+* [File 1](data/match_large_1.txt)
+* [File 2](data/match_large_2.txt)
 
 Write your program and test it with the smaller set before you test it with the larger set.
