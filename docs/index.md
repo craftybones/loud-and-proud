@@ -19,3 +19,6 @@
 * [`call`, `apply`, and `bind`](call_apply_bind)
 * Sync, async, callback
 * map, filter, reduce, forEach
+
+### Exercises
+1. [Match The Following](exercises/match_the_following)
