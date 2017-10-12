@@ -55,12 +55,12 @@ Generate a hollow rectangle of MxN dimension. Additionally the user should be ab
 * *
 ***
 
-// 20 x 7, A
-AAAAAAAAAAAAAAAAAAAA
-A                  A
-A                  A
-A                  A
-A                  A
-A                  A
-AAAAAAAAAAAAAAAAAAAA
+// 20 x 7, +
+++++++++++++++++++++
++                  +
++                  +
++                  +
++                  +
++                  +
+++++++++++++++++++++
 </pre>
