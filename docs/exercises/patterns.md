@@ -2,6 +2,7 @@
 
 The aim of this exercise is to develop a library that can generate text based geometric patterns. There are several problems in this exercise. Do them one by one. As you attempt each, you might realise better ways of solving these.
 
+_Do not reinvent unnecessary wheels_
 
 **1. Filled Rectangle**
 
@@ -102,6 +103,7 @@ Generate N lines of length M. The text used to generate the line should be cycle
 
 </pre>
 
+----
 **4. Left Aligned Triangle**
 
 Generate a left-aligned right angled triangle of size N as follows:
@@ -125,7 +127,7 @@ Generate a left-aligned right angled triangle of size N as follows:
 ******
 
 </pre>
-
+----
 **5. Right Aligned Triangle**
 
 Generate a right-aligned right angled triangle of size N as follows:
@@ -152,3 +154,149 @@ Generate a right-aligned right angled triangle of size N as follows:
 ******
 
 </pre>
+
+----
+**6. Left Aligned Hollow Triangle**
+
+Generate a left-aligned right angled hollow triangle of size N as follows:
+
+<pre>
+// 2,-
+-
+--
+
+// 3,+
++
+++
++++
+
+// 4,+
++
+++
++ +
+++++
+
+// 6, *
+*
+**
+* *
+*  *
+*   *
+******
+
+</pre>
+----
+**7. Right Aligned Hollow Triangle**
+
+Generate a right-aligned right angled hollow triangle of size N as follows:
+
+<pre>
+// 2,-(the empty line below is simply to differentiate. Your output should not contain it)
+
+ -
+--
+
+// 3,+(the empty line below is simply to differentiate. Your output should not contain it)
+
+  +
+ ++
++++
+
+// 4,+(the empty line below is simply to differentiate. Your output should not contain it)
+
+   +
+  ++
+ + +
+++++
+
+// 6, * (the empty line below is simply to differentiate. Your output should not contain it)
+
+     *
+    **
+   * *
+  *  *
+ *   *
+******
+
+</pre>
+----
+**8. Diamond**
+
+Generate a diamond of size N and the specified character. N specifies the widest part of the diamond(the middle line). N needs to be odd. If an even number is supplied, round it *up* to the nearest odd.
+
+<pre>
+// 3,+
+ +
++++
+ +
+
+// 5,*
+  *
+ ***
+*****
+ ***
+  *
+
+// 4,* (round up to 5)
+  *
+ ***
+*****
+ ***
+  *
+
+</pre>
+----
+**9. Hollow Diamond**
+
+Generate a hollow diamond of size N and the specified character. N specifies the widest part of the diamond(the middle line). N needs to be odd. If an even number is supplied, round it *up* to the nearest odd.
+
+<pre>
+// 3,+
+ +
++ +
+ +
+
+// 5,*
+  *
+ * *
+*   *
+ * *
+  *
+
+// 4,* (round up to 5)
+  *
+ * *
+*   *
+ * *
+  *
+
+</pre>
+----
+**10. Angled Hollow Diamond**
+
+Generate a hollow diamond whose edges are sloped. Unlike the previous diamond examples, this diamond only uses the character specified on the tips of the diamond.
+
+<pre>
+// 3,-
+ -
+- -
+ -
+
+// 5,+
+  +
+ / \
++   +
+ \ /
+  +
+
+// 7,*
+   *
+  / \
+ /   \
+*     *
+ \   /
+  \ /
+   *
+
+</pre>
+----
