@@ -22,3 +22,4 @@
 
 ### Exercises
 1. [Match The Following](exercises/match_the_following)
+1. [Patterns](exercises/patterns)
