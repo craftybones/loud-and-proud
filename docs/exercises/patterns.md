@@ -7,7 +7,7 @@ _Do not reinvent unnecessary wheels_
 **1. Filled Rectangle**
 
 Generate a filled rectangle of MxN dimension. Additionally the user should be able to specify the character used to fill the rectangle.
-<pre>
+```text
 // 1 x 1, *
 *
 
@@ -30,7 +30,7 @@ AAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAA
-</pre>
+```
 
 ----
 
@@ -38,7 +38,7 @@ AAAAAAAAAAAAAAAAAAAA
 
 Generate a hollow rectangle of MxN dimension. Additionally the user should be able to specify the character that outlines the rectangle.
 
-<pre>
+```text
 // 1 x 1, *
 *
 
@@ -66,14 +66,14 @@ Generate a hollow rectangle of MxN dimension. Additionally the user should be ab
 +                  +
 +                  +
 ++++++++++++++++++++
-</pre>
+```
 ----
 
 **3. Cyclical Lines**
 
 Generate N lines of length M. The text used to generate the line should be cycled through a list of characters
 
-<pre>
+```text
 // 3 x 1,+,-
 +
 -
@@ -101,14 +101,14 @@ Generate N lines of length M. The text used to generate the line should be cycle
 +
 +
 
-</pre>
+```
 
 ----
 **4. Left Aligned Triangle**
 
 Generate a left-aligned right angled triangle of size N as follows:
 
-<pre>
+```text
 // 2,-
 -
 --
@@ -126,13 +126,13 @@ Generate a left-aligned right angled triangle of size N as follows:
 *****
 ******
 
-</pre>
+```
 ----
 **5. Right Aligned Triangle**
 
 Generate a right-aligned right angled triangle of size N as follows:
 
-<pre>
+```text
 // 2,-(the empty line below is simply to differentiate. Your output should not contain it)
 
  -
@@ -153,14 +153,14 @@ Generate a right-aligned right angled triangle of size N as follows:
  *****
 ******
 
-</pre>
+```
 
 ----
 **6. Left Aligned Hollow Triangle**
 
 Generate a left-aligned right angled hollow triangle of size N as follows:
 
-<pre>
+```text
 // 2,-
 -
 --
@@ -184,13 +184,13 @@ Generate a left-aligned right angled hollow triangle of size N as follows:
 *   *
 ******
 
-</pre>
+```
 ----
 **7. Right Aligned Hollow Triangle**
 
 Generate a right-aligned right angled hollow triangle of size N as follows:
 
-<pre>
+```text
 // 2,-(the empty line below is simply to differentiate. Your output should not contain it)
 
  -
@@ -218,13 +218,13 @@ Generate a right-aligned right angled hollow triangle of size N as follows:
  *   *
 ******
 
-</pre>
+```
 ----
 **8. Diamond**
 
 Generate a diamond of size N and the specified character. N specifies the widest part of the diamond(the middle line). N needs to be odd. If an even number is supplied, round it *up* to the nearest odd.
 
-<pre>
+```text
 // 3,+
  +
 +++
@@ -244,13 +244,13 @@ Generate a diamond of size N and the specified character. N specifies the widest
  ***
   *
 
-</pre>
+```
 ----
 **9. Hollow Diamond**
 
 Generate a hollow diamond of size N and the specified character. N specifies the widest part of the diamond(the middle line). N needs to be odd. If an even number is supplied, round it *up* to the nearest odd.
 
-<pre>
+```text
 // 3,+
  +
 + +
@@ -270,13 +270,13 @@ Generate a hollow diamond of size N and the specified character. N specifies the
  * *
   *
 
-</pre>
+```
 ----
 **10. Angled Hollow Diamond**
 
 Generate a hollow diamond whose edges are sloped. Unlike the previous diamond examples, this diamond only uses the character specified on the tips of the diamond.
 
-<pre>
+```text
 // 3,-
  -
 - -
@@ -298,5 +298,5 @@ Generate a hollow diamond whose edges are sloped. Unlike the previous diamond ex
   \ /
    *
 
-</pre>
+```
 ----
